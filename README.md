@@ -10,20 +10,15 @@ selection of a balanced sample in stratified population. For more
 details see Raphaël Jauslin, Esther Eustache and Yves Tillé (2021)
 <https://arxiv.org/abs/2101.05568>.
 
-## Build
-
-[![Build
-Status](https://travis-ci.org/RJauslin/StratifiedSampling.svg?branch=master)](https://travis-ci.org/RJauslin/StratifiedSampling)
+The package propose also a method to do statistical matching using
+optimal transport and balanced sampling. For more details see Raphaël
+Jauslin and Yves Tillé (2021) <https://arxiv.org/abs/2105.08379>.
 
 ## Installation
 
-<!-- ### CRAN version -->
+### CRAN version
 
-<!-- ``` -->
-
-<!-- install.packages("WaveSampling") -->
-
-<!-- ``` -->
+    install.packages("StratifiedSampling")
 
 ### Latest version
 
@@ -35,7 +30,14 @@ with the following command:
 devtools::install_github("Rjauslin/StratifiedSampling")
 ```
 
-## Simple example
+## Optimal transport matching
+
+A complete example on how to use the package to make an optimal
+statistical transport match can be found in the following vignette:
+
+    vignette("ot_matching", package = "StratifiedSampling")
+
+## Simple example on stratified population
 
 This basic example shows you how to set up a stratified sampling design.
 The example is done on the `swissmunicipalities` dataset from the
@@ -44,12 +46,7 @@ package `sampling`.
 ``` r
 library(sampling)
 library(StratifiedSampling)
-#> Loading required package: Matrix
-#> 
-#> Attaching package: 'StratifiedSampling'
-#> The following object is masked from 'package:base':
-#> 
-#>     choose
+#> Le chargement a nécessité le package : Matrix
 
 data(swissmunicipalities)
 swiss <- swissmunicipalities
@@ -87,22 +84,22 @@ and have the right number of units selected in each stratum.
 
 ``` r
 head(s)
-#> [1] 0 0 0 0 0 0
+#> [1] 0 0 1 0 0 0
 
 sum(s)
 #> [1] 560
 t(X/pik)%*%s
 #>          [,1]
-#>  [1,] 4035984
-#>  [2,] 1256920
-#>  [3,] 3439487
-#>  [4,] 3575885
-#>  [5,] 7015372
-#>  [6,] 1615537
-#>  [7,] 2049134
-#>  [8,] 2281516
-#>  [9,] 1069184
-#> [10,] 2974870
+#>  [1,] 3892352
+#>  [2,] 1266973
+#>  [3,] 4066595
+#>  [4,] 4298949
+#>  [5,] 8365545
+#>  [6,] 1829315
+#>  [7,] 2489098
+#>  [8,] 2704028
+#>  [9,] 1343104
+#> [10,] 3680468
 t(X/pik)%*%pik
 #>          [,1]
 #>  [1,] 3998831
