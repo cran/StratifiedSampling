@@ -12,7 +12,7 @@
 
 <meta name="author" content="Raphaël Jauslin" />
 
-<meta name="date" content="2021-05-20" />
+<meta name="date" content="2021-09-24" />
 
 <title>Statistical Matching using Optimal Transport</title>
 
@@ -24,6 +24,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -131,7 +132,7 @@ a.sourceLine {
 <div class="inner">
 <h1 class="title toc-ignore">Statistical Matching using Optimal Transport</h1>
 <h3 class="author">Raphaël Jauslin</h3>
-<h3 class="date">2021-05-20</h3>
+<h3 class="date">2021-09-24</h3>
 </div>
 </header>
 
@@ -273,12 +274,12 @@ a.sourceLine {
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>object <span class="ot">&lt;-</span> <span class="fu">otmatch</span>(X1,id1,X2,id2,w1,w2)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(object[,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         id1    id2     weight</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      2002   2002 12.3693242</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2403   2403  18503  6.6549822</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2403.1 2403 391904  7.0634999</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2404   2404 256903  0.7315227</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2404.1 2404 286302 12.9999855</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2505   2505 361005 12.9288819</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 401     401 483102 14.9080488</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1801   1801 371901 13.0680348</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2802   2802  30101  0.6713613</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2802.1 2802 303401  3.9807038</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2802.2 2802 597501  8.4273587</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3501   3501 339003  5.4671218</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>Y1_ot <span class="ot">&lt;-</span> <span class="fu">cbind</span>(X1[<span class="fu">as.character</span>(object<span class="sc">$</span>id1),],<span class="at">y =</span> Y1[<span class="fu">as.character</span>(object<span class="sc">$</span>id1),])</span>
 <span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>Z2_ot <span class="ot">&lt;-</span> <span class="fu">cbind</span>(X2[<span class="fu">as.character</span>(object<span class="sc">$</span>id2),],<span class="at">z =</span> Z2[<span class="fu">as.character</span>(object<span class="sc">$</span>id2),])</span>
@@ -290,14 +291,14 @@ a.sourceLine {
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># result</span></span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">addmargins</span>(YZ_ot),<span class="dv">3</span>)</span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       (0,15]  (15,30]  (30,45]  (45,60]  (60,75]  (75,90] (90,100]       Sum</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    590.712  842.961  691.578  913.959  642.791  763.596  579.974  5025.572</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     92.120  172.447  177.192  178.544  156.887  130.758   94.599  1002.547</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     44.705   49.082   72.319   99.973   59.875   98.070   77.787   501.812</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    157.860  141.832  135.632  145.374  147.062   98.797   38.622   865.179</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    490.223  391.945  514.436  493.816  489.049  484.409  491.583  3355.461</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     21.357   68.943   20.831   10.583   23.219    9.848   21.952   176.734</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7    139.597  210.281  226.080  256.982  184.846   74.058   87.854  1179.696</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sum 1536.574 1877.491 1838.068 2099.231 1703.730 1659.536 1392.370 12107.000</span></span></code></pre></div>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    798.837  608.164  635.804  817.795  943.154  805.084  457.629  5066.467</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    243.294  136.607  147.983  177.563  215.863  175.939   99.867  1197.117</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    109.862  122.810   89.308   99.774   93.710  138.813    8.098   662.375</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    129.711   76.272   71.171   98.921   94.545   63.649   25.722   559.991</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    654.381  318.511  362.393  488.008  488.052  402.352  407.157  3120.855</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     34.198   27.365   45.834   71.793   13.557   48.386   16.290   257.423</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7    221.135  184.752  193.826  214.999  221.704  142.417   63.937  1242.771</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sum 2191.419 1474.481 1546.320 1968.853 2070.585 1776.640 1078.701 12107.000</span></span></code></pre></div>
 </div>
 <div id="balanced-sampling" class="section level2">
 <h2>Balanced sampling</h2>
@@ -306,13 +307,13 @@ a.sourceLine {
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Balanced Sampling </span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>BS <span class="ot">&lt;-</span> <span class="fu">bsmatch</span>(object)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(BS<span class="sc">$</span>object[,<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>])</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         id1    id2     weight</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      2002   2002 12.3693242</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2403   2403  18503  6.6549822</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2404   2404 256903  0.7315227</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2505   2505 361005 12.9288819</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3901   3901 474502 13.1517446</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4101.1 4101 138501  1.6895103</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         id1    id2    weight</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 401     401 483102 14.908049</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1801   1801 371901 13.068035</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2802.1 2802 303401  3.980704</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3501.1 3501 570904  7.023456</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4001   4001 425101  6.044974</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5201   5201 215302 12.230852</span></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>Y1_bs <span class="ot">&lt;-</span> <span class="fu">cbind</span>(X1[<span class="fu">as.character</span>(BS<span class="sc">$</span>object<span class="sc">$</span>id1),],<span class="at">y =</span> Y1[<span class="fu">as.character</span>(BS<span class="sc">$</span>object<span class="sc">$</span>id1),])</span>
@@ -321,14 +322,14 @@ a.sourceLine {
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>YZ_bs[<span class="fu">is.na</span>(YZ_bs)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">addmargins</span>(YZ_bs),<span class="dv">3</span>)</span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       (0,15]  (15,30]  (30,45]  (45,60]  (60,75]  (75,90] (90,100]       Sum</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    621.099  800.005  660.437  889.889  647.441  788.650  618.051  5025.572</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    100.353  158.434  172.335  184.415  166.926  119.849  100.235  1002.547</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     61.437   62.601   86.312   93.052   37.187   99.268   61.955   501.812</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    149.533  114.650  138.389  165.151  123.416  108.776   65.264   865.179</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    494.525  355.216  494.427  490.951  542.947  493.790  483.605  3355.461</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     23.058   68.806   25.641   12.413   24.311   10.763   11.743   176.734</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7    145.609  200.086  237.068  267.377  188.187   60.880   80.490  1179.696</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sum 1595.614 1759.797 1814.609 2103.248 1730.415 1681.976 1421.342 12107.000</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    852.388  579.251  620.583  798.392  936.224  826.174  453.455  5066.467</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    239.351  136.121  164.141  190.650  197.252  148.271  121.331  1197.117</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    113.757  114.573   79.136   94.826   96.779  148.434   14.869   662.375</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    133.345   74.763   62.515   93.961  101.461   69.539   24.406   559.991</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    677.249  329.620  381.421  488.708  462.650  375.320  405.888  3120.855</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     35.026   27.932   39.346   71.604   13.557   46.307   23.650   257.423</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7    234.259  184.017  199.352  216.231  208.327  140.950   59.634  1242.771</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sum 2285.374 1446.278 1546.496 1954.372 2016.250 1754.997 1103.234 12107.000</span></span>
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co"># With Z2 as auxiliary information for stratified balanced sampling.</span></span>
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>BS <span class="ot">&lt;-</span> <span class="fu">bsmatch</span>(object,Z2)</span>
@@ -339,14 +340,14 @@ a.sourceLine {
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>YZ_bs[<span class="fu">is.na</span>(YZ_bs)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">addmargins</span>(YZ_bs),<span class="dv">3</span>)</span>
 <span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;       (0,15]  (15,30]  (30,45]  (45,60]  (60,75]  (75,90] (90,100]       Sum</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    651.249  862.018  647.975  885.562  679.848  772.688  526.232  5025.572</span></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     87.458  170.447  182.069  171.690  157.381  120.034  113.468  1002.547</span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     48.814   24.211   72.143  107.549   61.131  101.476   86.488   501.812</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    137.241  164.263  137.980  139.333  125.073  136.224   25.065   865.179</span></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    455.864  388.036  536.370  525.841  471.763  469.060  508.527  3355.461</span></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     23.058   68.806   25.641    0.000   23.053    0.000   36.176   176.734</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7    133.574  212.685  230.697  267.377  193.994   60.880   80.490  1179.696</span></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sum 1537.257 1890.466 1832.874 2097.351 1712.243 1660.362 1376.446 12107.000</span></span></code></pre></div>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    736.518  591.620  678.617  845.382  946.135  815.990  452.206  5066.467</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    272.931  138.393  113.688  194.099  245.541  149.761   82.704  1197.117</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    102.668  114.573   79.136   93.842   96.779  160.508   14.869   662.375</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    133.345  100.536   88.432  104.760   65.250   32.060   35.608   559.991</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    664.601  331.514  326.147  481.066  476.456  429.956  411.115  3120.855</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6     35.564   38.092   39.346   61.444   13.557   57.740   11.679   257.423</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7    242.581  163.849  223.569  192.967  219.221  128.421   72.163  1242.771</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Sum 2188.207 1478.578 1548.936 1973.560 2062.939 1774.437 1080.343 12107.000</span></span></code></pre></div>
 </div>
 <div id="prediction" class="section level2">
 <h2>Prediction</h2>
@@ -360,13 +361,13 @@ a.sourceLine {
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>Z_pred <span class="ot">&lt;-</span> <span class="fu">t</span>(q<span class="sc">*</span><span class="fu">disjunctive</span>(object<span class="sc">$</span>id1))<span class="sc">%*%</span><span class="fu">disjunctive</span>(Z2[<span class="fu">as.character</span>(object<span class="sc">$</span>id2),])</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(Z_pred) <span class="ot">&lt;-</span> <span class="fu">levels</span>(<span class="fu">factor</span>(Z2<span class="sc">$</span>c_income))</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Z_pred)</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;      (0,15]   (15,30] (30,45]   (45,60]  (60,75] (75,90] (90,100]</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,]      0 0.0000000       0 0.0000000 0.000000       0        1</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,]      0 0.5148893       0 0.4851107 0.000000       0        0</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,]      0 0.0000000       0 0.0000000 0.000000       1        0</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,]      0 0.0000000       0 1.0000000 0.000000       0        0</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,]      0 0.0000000       0 0.0000000 0.000000       0        1</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6,]      0 0.8656330       0 0.0000000 0.134367       0        0</span></span></code></pre></div>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         (0,15]   (15,30]    (30,45]   (45,60] (60,75]   (75,90] (90,100]</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1,] 0.0000000 1.0000000 0.00000000 0.0000000       0 0.0000000        0</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2,] 0.0000000 0.0000000 1.00000000 0.0000000       0 0.0000000        0</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3,] 0.3043486 0.0000000 0.05132958 0.0000000       0 0.6443219        0</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4,] 0.0000000 0.5623003 0.00000000 0.4376997       0 0.0000000        0</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5,] 0.0000000 0.0000000 0.45928093 0.0000000       0 0.5407191        0</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6,] 0.0000000 0.0000000 0.00000000 0.0000000       0 1.0000000        0</span></span></code></pre></div>
 </div>
     </section>
   </div>
