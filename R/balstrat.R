@@ -1,5 +1,5 @@
 #' @title Balanced Stratification
-#' 
+#' @name balstrat
 #' @description 
 #' 
 #' Select a stratified balanced sample. The function is similar to \code{\link[sampling:balancedstratification]{balancedstratification}} of the package sampling.
@@ -18,7 +18,7 @@
 #' @useDynLib StratifiedSampling, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
 #' 
-#' @seealso \code{\link{ffphase}},\code{\link{landingRM}}
+#' @seealso \code{\link{ffphase}}, \code{\link{landingRM}}
 #' 
 #' 
 #' @author Raphaël Jauslin \email{raphael.jauslin@@unine.ch}

@@ -1,5 +1,15 @@
 # NEWS for Package "StratifiedSampling"
 
+## StratifiedSampling 0.4.0
+# add vignette on Deville systematic
+* add Deville systematic functions (sys_deville, sys_devillepi2)
+* add EPS in stratifedcube and landingRM
+* add full option in osod
+* add cps C++ implementation of the UPmaxentropy function from sampling package.
+* add balseq stream sampling
+  - add distunitk in src folder.
+  - add Rglpk as depends in DESCRIPTION
+
 ## StratifiedSampling 0.3.0
 * add One step One decision sampling method (osod, c_bound, inclprob)
 * remove test_that
