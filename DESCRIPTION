@@ -1,7 +1,7 @@
 Package: StratifiedSampling
 Type: Package
 Title: Different Methods for Stratified Sampling
-Version: 0.4.0
+Version: 0.4.1
 Authors@R: c(
   person("Raphael", "Jauslin", email = "raphael.jauslin@unine.ch",role = c("aut", "cre"),comment = c(ORCID = "0000-0003-1088-3356")),
   person("Esther", "Eustache", email = "esther.eustache@unine.ch",role = c("aut")),
@@ -22,11 +22,11 @@ Suggests: knitr, rmarkdown, BalancedSampling, stats, testthat,
 RoxygenNote: 7.2.1
 VignetteBuilder: knitr
 NeedsCompilation: yes
-Packaged: 2022-10-21 08:06:27 UTC; jauslinr
+Packaged: 2022-10-24 07:56:48 UTC; jauslinr
 Author: Raphael Jauslin [aut, cre] (<https://orcid.org/0000-0003-1088-3356>),
   Esther Eustache [aut],
   Bardia Panahbehagh [aut] (<https://orcid.org/0000-0001-9122-7777>),
   Yves Tillé [aut] (<https://orcid.org/0000-0003-0904-5523>)
 Maintainer: Raphael Jauslin <raphael.jauslin@unine.ch>
 Repository: CRAN
-Date/Publication: 2022-10-21 08:45:08 UTC
+Date/Publication: 2022-10-26 10:55:08 UTC

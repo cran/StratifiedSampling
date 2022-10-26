@@ -1,6 +1,6 @@
-59e8cf800ae6131f1a9cbf60720b2d37 *DESCRIPTION
+c9824ade91a17eff8a7f4d872e29c0ee *DESCRIPTION
 86c038b01482d7f82009a86e2b2f4978 *NAMESPACE
-df6d3079380aa36e9cafe438dded36b0 *NEWS.md
+f00d22ba18e4a17e609e540306b0dbf6 *NEWS.md
 a84089f9f8e29ee2adfd934a072f89c1 *R/RcppExports.R
 60b6c7ba331ac369ac1e3bafdae82f7b *R/balseq.R
 e65e9472141c7d3e32925f348519b771 *R/balstrat.R
@@ -13,13 +13,13 @@ d0eba3a3cfd934b795baf54872d1fb32 *R/ffphase.R
 f389d6cfbe8a3883b35fa409e292d898 *R/onestep.R
 5fc52fdf74f691711856d2062d5eca88 *R/otmatch.R
 e7cdbac41034f361561232eff2e3e33f *R/stratifiedcube.R
-dae5f582043574c63ced700ce95a6c9e *R/sys_deville.R
+6feeab6ecd09988c37fbe8c60d46cee6 *R/sys_deville.R
 41083c44dd48581f8756c80d4945849d *R/varStrat.R
 f8f297175a0845b2c1c14277dedc03bd *README.md
 1d60032da480a91e0f8f23a9142d92d9 *build/vignette.rds
 61f19d59ccab99c77a2db6a6745b076b *inst/doc/ot_matching.R
 90926f7665b6fa91d178691657bac6e6 *inst/doc/ot_matching.Rmd
-d36c6ea799dab24dab500282bd078029 *inst/doc/ot_matching.html
+ca065a78d19edbcf3230e524b94d10cf *inst/doc/ot_matching.html
 f0b413b9f5e4b916875608e23469e498 *man/balseq.Rd
 f0d01fc9d544ff426fde249c4213d84c *man/balstrat.Rd
 40ea46a9ea15cd59394e9ad441730a28 *man/bsmatch.Rd
@@ -46,7 +46,7 @@ d14b115c764affa3d3df8de5afbcb841 *man/pikfromq.Rd
 d45a77bff09f132737c055913df1d897 *man/qfromw.Rd
 c39ac63a088c1bc67b1a6ce360bca27c *man/sfromq.Rd
 186082469bd34a0b50c27c063d92ad2e *man/stratifiedcube.Rd
-fe4ab567342e89b0dccd0605c27b6dce *man/sys_deville.Rd
+6569e55a44ae7756a6e0c9da223dc4c6 *man/sys_deville.Rd
 596da890e761a665551fd45a8fe538ec *man/sys_devillepi2.Rd
 10ed703606317b7766c74bed00d5bf9a *man/vApp.Rd
 34d66bc2be5703032a302c64dd073d24 *man/vDBS.Rd
