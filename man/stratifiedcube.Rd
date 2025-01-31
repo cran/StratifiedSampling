@@ -4,7 +4,15 @@
 \alias{stratifiedcube}
 \title{Stratified Sampling}
 \usage{
-stratifiedcube(X, strata, pik, EPS = 1e-07)
+stratifiedcube(
+  X,
+  strata,
+  pik,
+  EPS = 1e-07,
+  rand = TRUE,
+  landing = TRUE,
+  lp = TRUE
+)
 }
 \arguments{
 \item{X}{A matrix of size (\eqn{N} x \eqn{p}) of auxiliary variables on which the sample must be balanced.}
@@ -14,6 +22,12 @@ stratifiedcube(X, strata, pik, EPS = 1e-07)
 \item{pik}{A vector of inclusion probabilities.}
 
 \item{EPS}{epsilon value}
+
+\item{rand}{if TRUE, the data are randomly arranged. Default TRUE}
+
+\item{landing}{if FALSE, no landing phase is done.}
+
+\item{lp}{if TRUE, landing by linear programming otherwise supression of variables. Default TRUE}
 }
 \value{
 A vector with elements equal to 0 or 1. The value 1 indicates that the unit is selected while the value 0 is for rejected units.
@@ -25,11 +39,13 @@ This function implements a method for selecting a stratified sample. It really i
 The function is selecting a balanced sample very quickly even if the sum of inclusion probabilities within strata are non-integer. The function should be used in preference. Firstly, a flight phase is performed on each strata. Secondly, the function \code{\link{findB}} is used to find a particular matrix to apply a flight phase by using the cube method proposed by Chauvet, G. and Tillé, Y. (2006). Finally, a landing phase is applied by suppression of variables.
 }
 \examples{
+
+# EXAMPLE WITH EQUAL INCLUSION PROBABILITES AND SUM IN EACH STRATA INTEGER
 N <- 100
 n <- 10
 p <- 4
 X <- matrix(rgamma(N*p,4,25),ncol = p)
-strata <- as.matrix(rep(1:n,each = N/n))
+strata <- rep(1:n,each = N/n)
 pik <- rep(n/N,N)
 
 s <- stratifiedcube(X,strata,pik)
@@ -41,6 +57,59 @@ Xcat <- disj(strata)
 
 t(Xcat)\%*\%s
 t(Xcat)\%*\%pik
+
+
+# EXAMPLE WITH UNEQUAL INCLUSION PROBABILITES AND SUM IN EACH STRATA INTEGER
+N <- 100
+n <- 10
+X <- cbind(rgamma(N,4,25),rbinom(N,20,0.1),rlnorm(N,9,0.1),runif(N))
+colSums(X)
+strata <- rbinom(N,10,0.7)
+strata <- sampling::cleanstrata(strata)
+pik <- as.vector(sampling::inclusionprobastrata(strata,ceiling(table(strata)*0.10)))
+EPS = 1e-7
+
+s <- stratifiedcube(X,strata,pik)
+test <- stratifiedcube(X,strata,pik,landing = FALSE)
+
+t(X/pik)\%*\%s
+t(X/pik)\%*\%test
+t(X/pik)\%*\%pik
+
+Xcat <- disj(strata)
+
+t(Xcat)\%*\%s
+t(Xcat)\%*\%test
+t(Xcat)\%*\%pik
+
+
+# EXAMPLE WITH UNEQUAL INCLUSION PROBABILITES AND SUM IN EACH STRATA NOT INTEGER
+set.seed(3)
+N <- 100
+n <- 10
+X <- cbind(rgamma(N,4,25),rbinom(N,20,0.1),rlnorm(N,9,0.1),runif(N))
+strata <- rbinom(N,10,0.7)
+strata <- sampling::cleanstrata(strata)
+pik <- runif(N)
+EPS = 1e-7
+tapply(pik,strata,sum)
+table(strata)
+
+
+s <- stratifiedcube(X,strata,pik,landing = TRUE)
+test <- stratifiedcube(X,strata,pik,landing = FALSE)
+
+
+t(X/pik)\%*\%s
+t(X/pik)\%*\%test
+t(X/pik)\%*\%pik
+
+Xcat <- disj(strata)
+
+t(Xcat)\%*\%s
+t(Xcat)\%*\%pik
+t(Xcat)\%*\%test
+
 
 }
 \references{

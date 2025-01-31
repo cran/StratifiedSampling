@@ -67,35 +67,35 @@ BEGIN_RCPP
 END_RCPP
 }
 // disj
-arma::umat disj(arma::uvec strata);
-RcppExport SEXP _StratifiedSampling_disj(SEXP strataSEXP) {
+Rcpp::IntegerMatrix disj(Rcpp::IntegerVector strata_input);
+RcppExport SEXP _StratifiedSampling_disj(SEXP strata_inputSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::uvec >::type strata(strataSEXP);
-    rcpp_result_gen = Rcpp::wrap(disj(strata));
+    Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type strata_input(strata_inputSEXP);
+    rcpp_result_gen = Rcpp::wrap(disj(strata_input));
     return rcpp_result_gen;
 END_RCPP
 }
 // ncat
-arma::rowvec ncat(arma::umat Xcat);
-RcppExport SEXP _StratifiedSampling_ncat(SEXP XcatSEXP) {
+Rcpp::NumericVector ncat(Rcpp::IntegerMatrix Xcat_input);
+RcppExport SEXP _StratifiedSampling_ncat(SEXP Xcat_inputSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::umat >::type Xcat(XcatSEXP);
-    rcpp_result_gen = Rcpp::wrap(ncat(Xcat));
+    Rcpp::traits::input_parameter< Rcpp::IntegerMatrix >::type Xcat_input(Xcat_inputSEXP);
+    rcpp_result_gen = Rcpp::wrap(ncat(Xcat_input));
     return rcpp_result_gen;
 END_RCPP
 }
 // disjMatrix
-arma::umat disjMatrix(arma::umat strata);
-RcppExport SEXP _StratifiedSampling_disjMatrix(SEXP strataSEXP) {
+Rcpp::IntegerMatrix disjMatrix(Rcpp::IntegerMatrix strata_input);
+RcppExport SEXP _StratifiedSampling_disjMatrix(SEXP strata_inputSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< arma::umat >::type strata(strataSEXP);
-    rcpp_result_gen = Rcpp::wrap(disjMatrix(strata));
+    Rcpp::traits::input_parameter< Rcpp::IntegerMatrix >::type strata_input(strata_inputSEXP);
+    rcpp_result_gen = Rcpp::wrap(disjMatrix(strata_input));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -110,6 +110,19 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< bool >::type tore(toreSEXP);
     Rcpp::traits::input_parameter< double >::type toreBound(toreBoundSEXP);
     rcpp_result_gen = Rcpp::wrap(distUnitk(X, k, tore, toreBound));
+    return rcpp_result_gen;
+END_RCPP
+}
+// ffphase
+Rcpp::NumericVector ffphase(arma::mat Xbal, arma::vec prob, bool order);
+RcppExport SEXP _StratifiedSampling_ffphase(SEXP XbalSEXP, SEXP probSEXP, SEXP orderSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type Xbal(XbalSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type prob(probSEXP);
+    Rcpp::traits::input_parameter< bool >::type order(orderSEXP);
+    rcpp_result_gen = Rcpp::wrap(ffphase(Xbal, prob, order));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -257,6 +270,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_StratifiedSampling_ncat", (DL_FUNC) &_StratifiedSampling_ncat, 1},
     {"_StratifiedSampling_disjMatrix", (DL_FUNC) &_StratifiedSampling_disjMatrix, 1},
     {"_StratifiedSampling_distUnitk", (DL_FUNC) &_StratifiedSampling_distUnitk, 4},
+    {"_StratifiedSampling_ffphase", (DL_FUNC) &_StratifiedSampling_ffphase, 3},
     {"_StratifiedSampling_inclprob", (DL_FUNC) &_StratifiedSampling_inclprob, 2},
     {"_StratifiedSampling_qfromw", (DL_FUNC) &_StratifiedSampling_qfromw, 2},
     {"_StratifiedSampling_sfromq", (DL_FUNC) &_StratifiedSampling_sfromq, 1},

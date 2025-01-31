@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 library(knitr)
 library(prettydoc)
 knitr::opts_chunk$set(
@@ -145,7 +145,6 @@ Z2_bs <- cbind(X2[as.character(BS$object$id2),],z = Z2[as.character(BS$object$id
 YZ_bs <- tapply(BS$object$weight/BS$q,list(Y1_bs$y,Z2_bs$z),sum)
 YZ_bs[is.na(YZ_bs)] <- 0
 round(addmargins(YZ_bs),3)
-
 
 
 

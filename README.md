@@ -6,14 +6,14 @@
 In this R package, different functions are implemented for selecting
 samples .
 
--   If the population of interest is stratified. Different functions are
-    implemented, for more details see
-    <https://doi.org/10.1007/s42081-021-00134-y>.
--   If two datasets are available for statistical matching. A method
-    based on optimal transport is implemented, for more details see
-    <https://arxiv.org/abs/2105.08379>.
--   If you are interested in the Sequential Spatially Balanced method.
-    <https://arxiv.org/abs/2112.01164>
+- If the population of interest is stratified. Different functions are
+  implemented, for more details see
+  <https://doi.org/10.1007/s42081-021-00134-y>.
+- If two datasets are available for statistical matching. A method based
+  on optimal transport is implemented, for more details see
+  <https://doi.org/10.1016/j.jspi.2022.12.003>.
+- If you are interested in the Sequential Spatially Balanced method.
+  <https://doi.org/10.1002/env.2776>
 
 The package contains also some useful functions. Look at the manual of
 the package for more information.
@@ -108,22 +108,22 @@ and have the right number of units selected in each stratum.
 
 ``` r
 head(s)
-#> [1] 0 1 0 0 1 0
+#> [1] 0 1 0 0 0 0
 
 sum(s)
 #> [1] 560
 t(X/pik)%*%s
 #>          [,1]
-#>  [1,] 4035368
-#>  [2,] 1279586
-#>  [3,] 3736660
-#>  [4,] 3901323
-#>  [5,] 7637982
-#>  [6,] 1734546
-#>  [7,] 2289617
-#>  [8,] 2443589
-#>  [9,] 1170231
-#> [10,] 3301463
+#>  [1,] 4002777
+#>  [2,] 1268448
+#>  [3,] 3717955
+#>  [4,] 3881493
+#>  [5,] 7599447
+#>  [6,] 1718897
+#>  [7,] 2284406
+#>  [8,] 2433051
+#>  [9,] 1163093
+#> [10,] 3280048
 t(X/pik)%*%pik
 #>          [,1]
 #>  [1,] 3998831

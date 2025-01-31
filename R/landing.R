@@ -9,9 +9,9 @@
 #' @description
 #' This function performs the landing phase of the cube method using suppression of variables proposed by Chauvet and Tillé (2006).
 #'
-#' @author Raphaël Jauslin \email{raphael.jauslin@@unine.ch}
 #'
 #' @seealso \code{\link{fbs}}, \code{\link{balstrat}}.
+#' @importFrom stats rbinom
 #' 
 #' @references
 #' Chauvet, G. and Tillé, Y. (2006). A fast algorithm of balanced sampling. \emph{Computational Statistics}, 21/1:53-62
@@ -30,7 +30,6 @@
 #' t(X/pik)%*%s
 #' @export
 landingRM <- function(A,pikstar,EPS = 1e-7){
-
 
   ##----------------------------------------------------------------
   ##                          Initializing                         -
@@ -95,8 +94,12 @@ landingRM <- function(A,pikstar,EPS = 1e-7){
   # cat("sum pikstar after dropping variables:", sum(pikstar[i]),"\n")
   
   if(length(i) != 0){
-    stop("error you still have, after landing, at least one unit that have inlcusion probability not equal to 0 or 1. Check that you have put the vector of inclusion probabilities as first column on the auxiliary variables.")
+    # stop("error you still have, after landing, at least one unit that have inlcusion probability not equal to 0 or 1. Check that you have put the vector of inclusion probabilities as first column on the auxiliary variables.")
   }
+  if(length(i) == 1){
+    pikstar[i] = stats::rbinom(1,1,pikstar[i]);  
+  }
+  
   
   return(round(pikstar,6))
 }
